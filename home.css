@@ -649,3 +649,40 @@ html[data-lang="en"] [lang="tr"] {
     display: none;
   }
 }
+
+/* Narrow phones: the plan card's bottom bar and stats stay on one line. */
+@media (max-width: 420px) {
+  .app-plan {
+    padding: 16px 14px 12px;
+  }
+
+  .app-plan-name {
+    font-size: 24px;
+  }
+
+  .app-plan-stats strong {
+    font-size: 19px;
+  }
+
+  .app-plan-stats span {
+    font-size: 11px;
+  }
+
+  .app-plan-cta {
+    padding-left: 16px;
+  }
+
+  .app-plan-cta-label {
+    font-size: 11px;
+    letter-spacing: 1.2px;
+  }
+
+  .app-plan-price {
+    font-size: 14px;
+  }
+
+  .app-plan-arrow {
+    width: 36px;
+    height: 36px;
+  }
+}
