@@ -44,6 +44,14 @@ a {
   text-decoration: none;
 }
 
+/* The wordmark is an SVG (images/w4rdica-wordmark.svg), so the star in
+   the "4" sits in the same place on every device and font. */
+.brand-logo {
+  display: block;
+  height: 16px;
+  width: auto;
+}
+
 nav.top {
   display: flex;
   flex-wrap: wrap;
