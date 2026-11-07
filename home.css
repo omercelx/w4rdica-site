@@ -55,6 +55,14 @@
   color: var(--ink);
 }
 
+/* The tilted second hero picture may reach past the window edge on
+   mid-size screens; it is clipped there instead of making the page scroll
+   sideways (clip keeps the sticky header working). */
+main {
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
 .section {
   max-width: 1120px;
   margin: 0 auto;
@@ -140,13 +148,37 @@
   border-radius: 31px;
 }
 
+/* App Store screenshots (headline + screen in one picture), one picture
+   per language: the [lang] rule below shows only the current one. The box
+   has the pictures' exact ratio (780 x 1691), so nothing is cropped and
+   the page never jumps while they load. */
+.shot {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 780 / 1691;
+  border-radius: 30px;
+  overflow: hidden;
+  background: #1f2b1d;
+  box-shadow:
+    0 0 0 1px rgba(240, 241, 229, 0.12),
+    0 30px 60px rgba(0, 0, 0, 0.35);
+}
+
+.shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .hero-phones {
   position: relative;
   display: flex;
   justify-content: center;
 }
 
-.hero-phones .phone:nth-child(2) {
+.hero-phones .shot:nth-child(2) {
   position: absolute;
   max-width: 230px;
   right: -10px;
@@ -273,11 +305,13 @@
   align-items: flex-start;
 }
 
-.phone-pair .phone {
+.phone-pair .phone,
+.phone-pair .shot {
   max-width: 240px;
 }
 
-.phone-pair .phone:nth-child(2) {
+.phone-pair .phone:nth-child(2),
+.phone-pair .shot:nth-child(2) {
   margin-top: 48px;
 }
 
@@ -622,7 +656,8 @@ html[data-lang="en"] [lang="tr"] {
     padding-bottom: 20px;
   }
 
-  .hero-phones .phone:nth-child(2) {
+  .hero-phones .phone:nth-child(2),
+  .hero-phones .shot:nth-child(2) {
     display: none;
   }
 
@@ -633,16 +668,23 @@ html[data-lang="en"] [lang="tr"] {
     grid-template-columns: 1fr;
   }
 
-  .phone-pair .phone {
+  .phone-pair .phone,
+  .phone-pair .shot {
     max-width: 46%;
   }
 
-  .phone-pair .phone:nth-child(2) {
+  .phone-pair .phone:nth-child(2),
+  .phone-pair .shot:nth-child(2) {
     margin-top: 32px;
   }
 
-  .phone {
-    max-width: 260px;
+  .phone,
+  .shot {
+    max-width: 280px;
+  }
+
+  .phone-pair .shot {
+    border-radius: 20px;
   }
 
   .header-actions .hide-mobile {
